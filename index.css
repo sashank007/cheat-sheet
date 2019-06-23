@@ -57,10 +57,14 @@ h4 {
 
 .footer {
   background: rgb(27, 25, 36);
-  color: #ff8b39;
+  color: #fffde7;
   padding: 15px;
   font-size: 1rem;
   border-radius: 5px;
   text-align: center;
   font-family: cursive;
+}
+
+.p_name {
+  color: #ff9800;
 }
