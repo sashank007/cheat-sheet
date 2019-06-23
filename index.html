@@ -1,0 +1,289 @@
+<head></head>
+<link rel="stylesheet" type="text/css" href="index.css" />
+<script
+  src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"
+  type="text/javascript"
+></script>
+<script type="text/javascript">
+  window.jQuery ||
+    document.write('<script src="js/libs/jquery-1.7.2.min.js">\x3C/script>');
+</script>
+<script src="search.js"></script>
+<h1 id="javascript-cheat-sheet">Javascript Cheat Sheet</h1>
+<h4 style="color:#c23a3a;">Search</h4>
+<form action="#">
+  <input class="input" name="input" type="text" />
+  <input class="reset" type="button" value="Reset" />
+</form>
+<h2 id="map-spread-operator">Map Spread Operator</h2>
+<pre><code class="language-javascript">let x = new Map([[&#39;first&#39;:&#39;second&#39;]]);
+let y = new Map([[&#39;third&#39;:&#39;fourth&#39;]]);
+let z = new Map([[...x] , [...y]]);
+//Map { &#39;first&#39; =&gt; &#39;second&#39;, &#39;third&#39; =&gt; &#39;fourth&#39; }
+</code></pre>
+<h2 id="truthy-and-falsy">Truthy and Falsy</h2>
+<pre><code class="language-Javascript">1 == &#39;1&#39; //true
+1 === &#39;1&#39; //false (must be same type)
+
+&quot;&quot; ==false //true
+&quot;&quot;===false//false
+0==false//true
+//use === when you want to check for strict equivalency else if you want to check if value exists, use ==</code></pre>
+<h2 id="ternary-operators">Ternary Operators</h2>
+<pre><code class="language-Javascript">var display = active ? &#39;bold&#39; : &#39;normal&#39;;
+
+const permissions = title ===&#39;manager&#39;? [&#39;time&#39;,&#39;pay&#39;] : [&#39;time&#39;];</code></pre>
+<h2 id="short-circuiting">Short Circuiting</h2>
+<pre><code class="language-Javascript">const path = icon.path || &#39;uploads/default.png&#39;;</code></pre>
+<h2 id="es6-arrow-functions">ES6 arrow functions</h2>
+<pre><code class="language-Javascript">//normal
+function capitalize(name)
+{
+    return name[0].toUpperCase()  + name.slice(1);
+}
+//ES6
+const capitalize = name =&gt;
+{
+    return name[0].toUpperCase() + name.slice(1);
+}
+
+const formatUser = name =&gt; `${capitalize(name)} is logged in.`;
+
+</code></pre>
+<h2 id="array-methods">Array Methods</h2>
+<pre><code class="language-Javascript">map ()
+    //Action :  Changes shape but not size
+    //Example : Get the name of everyone on the team
+
+sort()
+    //Action : Changes neither size nor shape, only order
+    //Example : Get team members in alphabetical order
+filter()
+    //Action : Changes size but not the shape
+    //Example : Get the developers on a team
+find()
+    //Action : Changes size to exactly one, but not shape. Does not return an array
+    //Example : Get the manager
+forEach()
+    //Action : Uses shape but returns nothin
+    //Example : Give all members a bonus
+reduce()
+    //Action: Changes size and shape to anything
+    //Example : Get total developers and non-dev</code></pre>
+<h2 id="map-iterator">map Iterator</h2>
+<pre><code class="language-Javascript">//returns array
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+const allColors = data.map(member =&gt; member.color);
+//returns [&#39;black&#39;,&#39;green&#39;,&#39;gold&#39;]</code></pre>
+<h2 id="filter">filter</h2>
+<pre><code class="language-Javascript">const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+const greenHero= data.filter(member=&gt;member.color===&#39;green&#39;);
+//returns [ { name: &#39;Green Lantern&#39;, color: &#39;green&#39; } ]</code></pre>
+<h2 id="foreach">forEach</h2>
+<pre><code class="language-Javascript">//used for performing action on each item
+//does not return anything
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+data.forEach(member=&gt;doSomething(member.name));</code></pre>
+<h2 id="chaining-methods">chaining methods</h2>
+<pre><code class="language-Javascript">
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+data.filter(hero =&gt;hero)
+    .map(hero=&gt;hero.color || &#39;no-color&#39;)
+    .forEach(hero=&gt;doSomething(hero));
+
+//iteration happening 9 times</code></pre>
+<h2 id="reduce">reduce</h2>
+<pre><code class="language-Javascript">//Can change both size and the shape of data
+//takes 2 parameters, callback with 2 parameters(accumulator and curr value) and value to initialize for the accumulator
+
+const numbers = [ 1  , -1 , 2, 3];
+
+const sum  = numbers.reduce((accum , currentValue)=&gt;{
+    return accum+currentValue;
+    }, 0 );
+
+//returns 5
+
+
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+const allColors = data.reduce((colors , hero)=&gt;
+{
+    const count = colors[hero.color] || 0 ;
+    return {
+        ...colors  , [hero.color]: count+1
+    }
+
+} , {} );
+
+//returns { black: 1, green: 1, gold: 1 };</code></pre>
+<h2 id="object-destructuring">Object destructuring</h2>
+<pre><code class="language-Javascript">
+const data =
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    };
+
+const  { color}  = data;
+//returns black</code></pre>
+<h2 id="rest-parameters">Rest parameters</h2>
+<pre><code class="language-Javascript">//Enable you to pass a list of arguments and assigns them to a variable
+const fun = (...args) =&gt; {return args}
+
+fun(&#39;a&#39; , &#39;b&#39; , [&#39;c&#39; ,&#39;d&#39; , &#39;e&#39; ,&#39;f&#39;])
+//returns &#39;a&#39; , &#39;b&#39; , [&#39;c&#39; ,&#39;d&#39; , &#39;e&#39; ,&#39;f&#39;]
+
+//separate first item from rest of array
+const data  = [ &#39;firstItem&#39; , &#39;secondItem&#39; , &#39;thirdItem&#39;];
+const {firstItem , ...restItems} = data;
+
+//rest element must always be the last element</code></pre>
+<h2 id="higher-order-functions--hoc-">Higher Order Functions ( HOC )</h2>
+<pre><code class="language-Javascript">//function that returns another function
+// lock in parameters so you can complete function later while still maintaing access to original arguments
+// isolate parameters
+
+//Higher order function to return a function with discount initiated
+const discounter = discount =&gt;
+{
+    return price =&gt; price * (1-discount);
+}
+
+discounter(0.1)(100);
+//returns 90
+
+//single responsibility parameters are good for reusing common arguments
+//same as initializing variables through constructor in OOP
+const vehicleInfo = (build ) =&gt;
+{
+    const { wheels ,color } = build;
+    const defaults = {
+        wheels,
+        color
+    }
+    return spec  =&gt;
+     {
+         return {...defaults , ...spec}
+     }
+}
+
+const newBike = vehicleInfo({wheels:2 , color:&#39;black&#39;})({brakes:&#39;disc&#39;});
+
+const newCar = vehicleInfo({wheels:4, color:&#39;blue&#39;})({drive:&#39;automatic&#39;});</code></pre>
+<h2 id="currying-functions">Currying functions</h2>
+<pre><code class="language-Javascript">//Currying is when you take a function that would require multiple arguments and return as eries of functions that take exactly one argument.
+
+const shows = [ 
+    { 
+        showName : &#39;breaking bad&#39;,
+        rating: 9.5
+    },
+    {
+        showName : &#39;Rick and Morty&#39;,
+        rating: 9.3
+    },
+    {
+        showName : &#39;The Office&#39;,
+        rating: 8.8
+
+    }
+
+];
+
+const getRatingValues = (shows , filterFun) =&gt;
+ { 
+     return shows.filter(filterFun)
+                 .map(show =&gt;show.showName);
+ }
+
+ const showFilter =  minimumRating =&gt; show =&gt; show.rating &gt; minimumRating;
+
+ getRatingValues ( shows, showFilter(9))
+
+//returns [&#39;breaking bad&#39; , &#39;Rick and Morty&#39; ]
+</code></pre>
+
+<div class="footer">
+  <div id="container">
+    <div id="cont">
+      <div class="footer_center">
+        <p>Created by: Sashank Tungaturthi</p>
+        <p>
+          Contact information:
+          <a href="mailto:sashank.tungaturthi@gmail.com">
+            sashank.tungaturthi@gmail.com</a
+          >.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

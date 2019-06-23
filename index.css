@@ -1,0 +1,66 @@
+body {
+  background-color: #262335;
+}
+
+h1 {
+  color: #fafafa;
+  text-align: center;
+}
+h2 {
+  color: #c6c6c6;
+}
+
+code {
+  color: #eeeeee;
+}
+
+pre {
+  background: #1b1924;
+  padding: 10px;
+  padding-left: 2%;
+  border-radius: 10px;
+  width: fit-content;
+  padding-right: 25%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.reset {
+  align-self: center;
+  background: transparent;
+  padding: 0.5rem 0.5rem;
+  margin: 0 1rem;
+  transition: all 0.5s ease;
+  color: #ffffff;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  outline: none;
+  box-shadow: 20px 38px 34px -26px hsla(0, 0%, 0%, 0.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+
+  /*
+    Above is shorthand for:
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius:15px 255px;
+    */
+}
+
+.reset:hover {
+  box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
+}
+
+h4 {
+  margin: 2px;
+}
+
+.footer {
+  background: rgb(27, 25, 36);
+  color: #ff8b39;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-family: cursive;
+}
