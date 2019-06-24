@@ -66,5 +66,37 @@ h4 {
 }
 
 .p_name {
-  color: #ff9800;
+  color: #dfe2dd;
+  text-shadow: 2px 2px 5px #ff3d00;
+}
+
+#show {
+  border: black solid 1px;
+  background: #ffffff;
+}
+
+.menu {
+  width: 300px;
+  padding: 0 2em;
+  float: right;
+  border: black solid 1px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: calc(100%-2px);
+  background: #ffffff;
+  transform: translateX(calc(300px + 4em + 2px));
+}
+
+.menu.display {
+  transform: translateX(0);
+  transition-property: transform;
+  transition-duration: 600ms;
+  transition-timing-function: linear;
+}
+
+a {
+  color: #dfe2dd;
+  text-shadow: 2px 2px 5px #ff3d00;
+  text-decoration: none;
 }

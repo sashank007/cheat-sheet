@@ -7,15 +7,31 @@
 <script type="text/javascript">
   window.jQuery ||
     document.write('<script src="js/libs/jquery-1.7.2.min.js">\x3C/script>');
+
+  $(function() {
+    $("#loadedContent").load("./Javascript.html");
+  });
 </script>
 <script src="search.js"></script>
-<h1 id="javascript-cheat-sheet">Javascript Cheat Sheet</h1>
+<!-- <button id="show">Menu</button>
+<section class="menu" id="sidebar">
+  <h3>Menu</h3>
+  <ul>
+    <li>Javascript</li>
+    <li>Git</li>
+    <li>Python</li>
+  </ul>
+</section> -->
+<!-- <h1 id="javascript-cheat-sheet">Javascript Cheat Sheet</h1> -->
+
 <h4 style="color:#c23a3a;">Search</h4>
 <form action="#">
   <input class="input" name="input" type="text" />
   <input class="reset" type="button" value="Reset" />
 </form>
-<h2 id="map-spread-operator">Map Spread Operator</h2>
+
+<div id="loadedContent"></div>
+<!-- <h2 id="map-spread-operator">Map Spread Operator</h2>
 <pre><code class="language-javascript">let x = new Map([[&#39;first&#39;:&#39;second&#39;]]);
 let y = new Map([[&#39;third&#39;:&#39;fourth&#39;]]);
 let z = new Map([[...x] , [...y]]);
@@ -270,7 +286,7 @@ const getRatingValues = (shows , filterFun) =&gt;
  getRatingValues ( shows, showFilter(9))
 
 //returns [&#39;breaking bad&#39; , &#39;Rick and Morty&#39; ]
-</code></pre>
+</code></pre> -->
 
 <div class="footer">
   <div id="container">

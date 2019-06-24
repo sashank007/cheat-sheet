@@ -1,0 +1,583 @@
+<h1 id="javascript-cheat-sheet">Javascript Cheat Sheet</h1>
+<h2 id="map-spread-operator">Map Spread Operator</h2>
+<pre><code class="language-javascript">let x = new Map([[&#39;first&#39;:&#39;second&#39;]]);
+let y = new Map([[&#39;third&#39;:&#39;fourth&#39;]]);
+let z = new Map([[...x] , [...y]]);
+//Map { &#39;first&#39; =&gt; &#39;second&#39;, &#39;third&#39; =&gt; &#39;fourth&#39; }
+</code></pre>
+<h2 id="truthy-and-falsy">Truthy and Falsy</h2>
+<pre><code class="language-Javascript">1 == &#39;1&#39; //true
+1 === &#39;1&#39; //false (must be same type)
+
+&quot;&quot; ==false //true
+&quot;&quot;===false//false
+0==false//true
+//use === when you want to check for strict equivalency else if you want to check if value exists, use ==</code></pre>
+<h2 id="ternary-operators">Ternary Operators</h2>
+<pre><code class="language-Javascript">var display = active ? &#39;bold&#39; : &#39;normal&#39;;
+
+const permissions = title ===&#39;manager&#39;? [&#39;time&#39;,&#39;pay&#39;] : [&#39;time&#39;];</code></pre>
+<h2 id="short-circuiting">Short Circuiting</h2>
+<pre><code class="language-Javascript">const path = icon.path || &#39;uploads/default.png&#39;;</code></pre>
+<h2 id="es6-arrow-functions">ES6 arrow functions</h2>
+<pre><code class="language-Javascript">//arrow functions adopt the this binding of the enclosing scope (in other words, they don’t change the meaning of this), so things just work automatically.
+
+//normal
+function capitalize(name)
+{
+    return name[0].toUpperCase()  + name.slice(1);
+}
+//ES6
+const capitalize = name =&gt;
+{
+    return name[0].toUpperCase() + name.slice(1);
+}
+
+const formatUser = name =&gt; `${capitalize(name)} is logged in.`;
+
+</code></pre>
+<h2 id="array-methods">Array Methods</h2>
+<pre><code class="language-Javascript">map ()
+    //Action :  Changes shape but not size
+    //Example : Get the name of everyone on the team
+
+sort()
+    //Action : Changes neither size nor shape, only order
+    //Example : Get team members in alphabetical order
+filter()
+    //Action : Changes size but not the shape
+    //Example : Get the developers on a team
+find()
+    //Action : Changes size to exactly one, but not shape. Does not return an array
+    //Example : Get the manager
+forEach()
+    //Action : Uses shape but returns nothin
+    //Example : Give all members a bonus
+reduce()
+    //Action: Changes size and shape to anything
+    //Example : Get total developers and non-dev</code></pre>
+<h2 id="map-iterator">map Iterator</h2>
+<pre><code class="language-Javascript">//returns array
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+const allColors = data.map(member =&gt; member.color);
+//returns [&#39;black&#39;,&#39;green&#39;,&#39;gold&#39;]</code></pre>
+<h2 id="filter">filter</h2>
+<pre><code class="language-Javascript">const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+const greenHero= data.filter(member=&gt;member.color===&#39;green&#39;);
+//returns [ { name: &#39;Green Lantern&#39;, color: &#39;green&#39; } ]</code></pre>
+<h2 id="foreach">forEach</h2>
+<pre><code class="language-Javascript">//used for performing action on each item
+//does not return anything
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+data.forEach(member=&gt;doSomething(member.name));</code></pre>
+<h2 id="chaining-methods">chaining methods</h2>
+<pre><code class="language-Javascript">
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+data.filter(hero =&gt;hero)
+    .map(hero=&gt;hero.color || &#39;no-color&#39;)
+    .forEach(hero=&gt;doSomething(hero));
+
+//iteration happening 9 times</code></pre>
+<h2 id="reduce">reduce</h2>
+<pre><code class="language-Javascript">//Can change both size and the shape of data
+//takes 2 parameters, callback with 2 parameters(accumulator and curr value) and value to initialize for the accumulator
+
+const numbers = [ 1  , -1 , 2, 3];
+
+const sum  = numbers.reduce((accum , currentValue)=&gt;{
+    return accum+currentValue;
+    }, 0 );
+
+//returns 5
+
+
+const data = [
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    } ,
+     {
+         name : &#39;Green Lantern&#39;,
+         color : &#39;green&#39;
+     },
+     {
+         name: &#39;Wonder Woman&#39;,
+         color : &#39;gold&#39;
+     }
+];
+
+const allColors = data.reduce((colors , hero)=&gt;
+{
+    const count = colors[hero.color] || 0 ;
+    return {
+        ...colors  , [hero.color]: count+1
+    }
+
+} , {} );
+
+//returns { black: 1, green: 1, gold: 1 };</code></pre>
+<h2 id="object-destructuring">Object destructuring</h2>
+<pre><code class="language-Javascript">
+const data =
+    {
+        name : &#39;Batman&#39;,
+        color : &#39;black&#39;
+    };
+
+const  { color}  = data;
+//returns black</code></pre>
+<h2 id="rest-parameters">Rest parameters</h2>
+<pre><code class="language-Javascript">//Enable you to pass a list of arguments and assigns them to a variable
+const fun = (...args) =&gt; {return args}
+
+fun(&#39;a&#39; , &#39;b&#39; , [&#39;c&#39; ,&#39;d&#39; , &#39;e&#39; ,&#39;f&#39;])
+//returns &#39;a&#39; , &#39;b&#39; , [&#39;c&#39; ,&#39;d&#39; , &#39;e&#39; ,&#39;f&#39;]
+
+//separate first item from rest of array
+const data  = [ &#39;firstItem&#39; , &#39;secondItem&#39; , &#39;thirdItem&#39;];
+const {firstItem , ...restItems} = data;
+
+//rest element must always be the last element</code></pre>
+<h2 id="higher-order-functions--hoc-">Higher Order Functions ( HOC )</h2>
+<pre><code class="language-Javascript">//function that returns another function
+// lock in parameters so you can complete function later while still maintaing access to original arguments
+// isolate parameters
+
+//Higher order function to return a function with discount initiated
+const discounter = discount =&gt;
+{
+    return price =&gt; price * (1-discount);
+}
+
+discounter(0.1)(100);
+//returns 90
+
+//single responsibility parameters are good for reusing common arguments
+//same as initializing variables through constructor in OOP
+const vehicleInfo = (build ) =&gt;
+{
+    const { wheels ,color } = build;
+    const defaults = {
+        wheels,
+        color
+    }
+    return spec  =&gt;
+     {
+         return {...defaults , ...spec}
+     }
+}
+
+const newBike = vehicleInfo({wheels:2 , color:&#39;black&#39;})({brakes:&#39;disc&#39;});
+
+const newCar = vehicleInfo({wheels:4, color:&#39;blue&#39;})({drive:&#39;automatic&#39;});</code></pre>
+<h2 id="currying-functions">Currying functions</h2>
+<pre><code class="language-Javascript">//Currying is when you take a function that would require multiple arguments and return as eries of functions that take exactly one argument.
+
+const shows = [
+    {
+        showName : &#39;breaking bad&#39;,
+        rating: 9.5
+    },
+    {
+        showName : &#39;Rick and Morty&#39;,
+        rating: 9.3
+    },
+    {
+        showName : &#39;The Office&#39;,
+        rating: 8.8
+
+    }
+
+];
+
+const getRatingValues = (shows , filterFun) =&gt;
+ {
+     return shows.filter(filterFun)
+                 .map(show =&gt;show.showName);
+ }
+
+ const showFilter =  minimumRating =&gt; show =&gt; show.rating &gt; minimumRating;
+
+ getRatingValues ( shows, showFilter(9))
+
+//returns [&#39;breaking bad&#39; , &#39;Rick and Morty&#39; ]
+</code></pre>
+<h2 id="classes">Classes</h2>
+<pre><code class="language-Javascript">//Javascript classes don&#39;t exactly work like other OOP languages.
+
+class Hero {
+    constructor(name, color)
+    {
+        this.name = name;
+        this.color = color;
+    }
+    getHeroName () {
+        return `Hero Name : ${this.name}`
+    }
+}
+
+const hero = new Hero(&#39;Superman&#39; , &#39;Blue&#39;);
+hero.color
+//returns Blue
+hero.getHeroName();
+//returns Superman
+
+//everything is public for now in JS classes.
+//`this` is now pointing to the hero object.</code></pre>
+<h2 id="inheritance">Inheritance</h2>
+<pre><code class="language-Javascript">import Hero from &#39;./hero&#39;;
+
+class MarvelHero extends Hero {
+
+constructor ( name , color)
+{
+    super(color);
+    this.name = `Marvel-${this.name}`;
+}
+
+getHeroName () {
+    return super.getHeroName() + ` and this is a Marvel hero.`;
+}
+}
+
+const newMarvelHero = new MarvelHero(&#39;Wolverine&#39;, &#39;Yellow&#39;)
+
+marvelHero.name;
+//returns Marvel-Wolverine
+</code></pre>
+<h2 id="prototype">Prototype</h2>
+<pre><code class="language-Javascript">
+//Javascript is a prototype langauge, when you create a new instance of a class, you aren&#39;t copying the methods. You are creating a link to a prototype.
+//class is just shorthand for a prototype.
+//A prototype is an object that&#39;s the base for the constructor function. All object instances derive properties from the prototype.
+
+function Hero(name , color)
+{
+    this.name = name;
+    this.color = color;
+
+    Hero.prototype.getName() = function ()
+    {
+        return `The hero name is ${this.name}`;
+    }
+}
+
+let hero = new Hero();
+hero.getName();</code></pre>
+<h2 id="getters-and-setters">getters and setters</h2>
+<pre><code class="language-Javascript">//getters and setters are good in masking methods to appear like properties.
+
+class Hero {
+    constructor(name, color)
+    {
+        this.name = name;
+        this.color = color;
+    }
+    get heroName () {
+        return `Hero Name : ${this.name}`
+    }
+
+    set heroName (name)
+    {
+        this.name  = `Hero-${name}`;
+    }
+
+}
+
+const hero = new Hero(&#39;Superman&#39;,&#39;Blue&#39;)
+hero.name;
+//returns Superman
+hero.heroName=&#39;Superman&#39;
+hero.heroName;
+//returns `Hero Name: Hero=Superman`</code></pre>
+<h2 id="generators">Generators</h2>
+<pre><code class="language-Javascript">//generator is a function that doesn&#39;t fully execute its body immediately when called.
+//add * after function to make a generator
+//special method called next() is now accessible
+//`yield` is used to return a piece of information
+
+function* getCairoTrilogy()
+{
+    yield `Palace Walk`;
+    yield `Palace of Desire`;
+    yield `Sugar Street`;
+}
+
+const trilogy = getCairoTrilogy();
+trilogy.next();
+//returns {value : &#39;Palace Wak&#39; , done : false}
+trilogy.next();
+//returns {value : &#39;Palace of Desire&#39; , done : false}
+trilogy.next();
+//returns {value : &#39;Sugar Street&#39;, done : false }
+trilogy.next();
+//retunrs {value : undefined , done :true }
+
+[...getCairoTrilogy]
+//returns [&#39;Palace Walk&#39;, &#39;Palace of Desire&#39;, &#39;Sugar Street&#39;]
+
+//generators are good in having iterators hidden inside classes
+//iterators will loop over each node and return the existing node.name
+
+class FamilyTree {
+    constructor()
+    {
+        this.family = {
+            name : &#39;Dolores&#39;,
+            child :
+            {
+                name : &#39;Martha&#39;,
+                child : {
+                    name : &#39;Dyan&#39;,
+                    child  : {
+                        name : &#39;Bea&#39;,
+                    },
+                },
+            },
+        };
+    }
+
+    * [Symbol.iterator]() {
+        console.log(Symbol.iterator);
+        let node = this.family;
+        while(node)
+        {
+            yield node.name;
+            node = node.child;
+        }
+    }
+}
+const family = new FamilyTree();
+[...family];
+//returns [&#39;Dolores&#39;, &#39;Martha&#39; , &#39;Dyan&#39; , &#39;Bea&#39;]
+
+//the iterator generator is called whenever any action that requires an iterable, such as spread or the for...of loop.</code></pre>
+<h2 id="binding-this">binding this</h2>
+<pre><code class="language-Javascript">//binding method exists on all function
+//lets you state your context explicitly
+//if you have a function that does not have a property, you can explicitly bind that property to the function so that at runtime the property exists inside that function
+
+function sayMessage ()
+{
+    return this.message;
+}
+const alert = {
+    message: &#39;Danger!&#39;;
+}
+const sayAlert = sayMessage.bind(alert);
+
+sayAlert();
+//Danger!
+
+//you can bind a function to this to tell the function to use current context rather than creating a new one.
+
+class Validator {
+    constructor()
+    {
+        this.message = &#39; is invalid.&#39;;
+        this.setInvalidMessage  = this.setInvalidMessage.bind(this);
+    }
+    setInvalidMessage(field)
+    {
+        return `${field} ${this.message}`;
+
+    }
+    setInvalidMessages(...fields)
+    {
+        return fields.map(this.setInvalidMessage);
+    }
+}
+//this is same as using arrow function in the constructor
+//in future spec, class properties can be set outside of the constructor
+
+class Validator {
+    message = &#39; is invalid&#39;;
+    setMessage =&gt; field =&gt; `${field} ${this.message}`;
+
+    setInvalidMessage (...fields)
+     {
+         return fields.map(this.setMessage);
+     }
+}</code></pre>
+<h2 id="promises">Promises</h2>
+<pre><code class="language-Javascript">//promise is an object that takes asynchronous action and calls one of two methods based on response : then and catch
+//promise takes two arguments : resolve() and reject()
+function getUserPref()
+{
+    const pref = new Promise((resolve, reject) =&gt;
+    {
+        resolve ({
+            theme :&#39;dark&#39;
+        });
+    });
+    return pref;
+}
+
+getUserPref()
+    .then(pref=&gt; {
+        doSomething(pref)
+        //returns somethign
+    })
+    .then(something=&gt;doOtherThing(something))
+    .cath(error=&gt; {console.error(error)});
+//returns &#39;dark&#39;
+</code></pre>
+<h2 id="asyncawait">Async/Await</h2>
+<pre><code class="language-Javascript">
+//async/await functions help in code cleanup in place of chaining multiple promises
+async function getArtistByPreference()
+{
+    const {theme} = await getUserPreferences();
+    const {album} = await getMusic(theme);
+    const {artist} = await getArtist(album);
+    return artist;
+}
+
+getArtistByPreference()
+    .then(artist =&gt;{console.log(artist)})
+    .catch(e=&gt;{console.error(e)});
+</code></pre>
+<h2 id="fetch">fetch</h2>
+<pre><code class="language-Javascript">//fetch isn&#39;t part of the javascript spec, it is defined by the WHATWG..
+//node uses node-fetch
+fetch(uri)
+    .then(data=&gt;{return data.json()})
+    .then(post=&gt;{console.log(post.title)});
+
+//response has a field called `ok` to check for 200-299 range
+fetch(uri)
+    .then(data=&gt; {
+    if(!data.ok)
+        throw Error(data.status)
+    }
+    return data.json();)
+    .then(post=&gt; console.log(post.title))
+    .catch(e=&gt; console.error(e));
+
+//for post you pass in special options as second argument
+const options = {
+    method : &#39;POST&#39;,
+    headers: {
+        &#39;Content-Type&#39; : &#39;application/json&#39;,
+    },
+    body: JSON.stringify(data)
+};
+fetch(uri , options).then ...</code></pre>
+<h2 id="localstorage">LocalStorage</h2>
+<pre><code class="language-Javascript">//local storage is a tiny database that exists only in your browser
+//isn&#39;t accesible by javascript in your browser
+//save data onto local storage like this :
+
+function saveBreed(breed)
+{
+    localStorage.setItem(&#39;breed&#39; , breed);
+}
+function getSavedBreed()
+{
+    return localStorage.getItem(&#39;breed&#39;);
+}
+function removeBreed()
+{
+    return localStorage.removeItem(&#39;breed&#39;);
+}
+
+function savePref(filters)
+{
+    const filterString = JSON.stringify([...filters]);
+    localStorage.setItem(&#39;filters&#39;,filterString);
+}
+
+function retrievePref()
+{
+    const pref = JSON.parse(localStorage.getItem(&#39;filters&#39;))
+    return new Map(pref);
+}
+localStorage.clear();
+//value must always be a string
+//sessionoStorage does not persist after tab is closed</code></pre>
+<h2 id="babel">Babel</h2>
+<pre><code class="language-Javascript">
+npm i --save-dev babel-cli babel-preset-env babel-preset-react
+
+//create .babelrc at root
+{presets : [&quot;env&quot; , &quot;react&quot;]}
+//babel converts the code but doesn&#39;t include a module loader which handles the compiled imports and exports</code></pre>
+<h2 id="webpack">Webpack</h2>
+<pre><code class="language-Javascript">//webpack is a project that can handle everything from combining JS to processing CSS or SASS.
+npm i --save-dev babel-loader webpack
+
+const path = require(&#39;path&#39;);
+module.exports = {
+    entry : &#39;./src/index.js&#39;,
+    module: {
+        loaders : [
+            {
+                test : /\.js?/,
+                use: &#39;babel-loader&#39;,
+            },
+        ],
+    },
+    output:
+    {
+        filename : &#39;build/bundle.js&#39;,
+        paths: path.resolve(__dirname)
+    }
+    };
+
+//inside scripts
+&quot;build&quot; : &quot;webpack&quot;</code></pre>

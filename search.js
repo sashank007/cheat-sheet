@@ -15,7 +15,14 @@ showAll = all => {
     all[i].style.display = "block";
   }
 };
+
+//sidebar menu
+
 $(document).ready(function() {
+  // const sidebar = document.getElementById("sidebar");
+  // document.getElementById("show").addEventListener("click", () => {
+  //   sidebar.classList.toggle("display");
+  // });
   $("input.reset").click(function() {
     $("input.input").val("");
     showAll(all);
