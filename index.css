@@ -1,5 +1,6 @@
 body {
   background-color: #262335;
+  margin: 7px;
 }
 
 h1 {
@@ -12,6 +13,9 @@ h2 {
 
 code {
   color: #eeeeee;
+}
+.search {
+  margin-top: 4em;
 }
 
 pre {
@@ -75,7 +79,7 @@ h4 {
   background: #ffffff;
 }
 
-.menu {
+/* .menu {
   width: 300px;
   padding: 0 2em;
   float: right;
@@ -99,4 +103,39 @@ a {
   color: #dfe2dd;
   text-shadow: 2px 2px 5px #ff3d00;
   text-decoration: none;
+} */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #262335;
+  border-bottom: 1px solid #675b5b;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin-right: 10px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 12px 12px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  /* background-color: #8a8686; */
+
+  text-shadow: 2px 5px 10px #dddddd;
 }
