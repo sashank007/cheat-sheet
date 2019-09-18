@@ -21,13 +21,31 @@ git checkout <branch-name>
 ## set upstream to be current branch when pushing
 
 ```
-git branch --set-upstream-to=<current-branch> <parent-branch>
+git branch --set-upstream-to=<parent-branch> <current-branch> 
 ```
 
 ## fetch from all branches
 
 ```
 git fetch --all
+```
+
+## pull from specific branch
+
+```
+git pull --<verbose/quiet> <remote-branch> <branch-name>
+```
+
+## pull from upstream
+
+```
+git pull upstream
+```
+
+## fetching a remote PR into local repo
+
+```
+git fetch origin pull/ID/head:BRANCHNAME
 ```
 
 ## pull from current branch
@@ -40,4 +58,15 @@ git pull
 
 ```
 git push origin --delete <branch-name>
+```
+
+## git stash untracked files also
+
+```
+git stash -u
+```
+## pop last stash
+
+```
+git pop
 ```
