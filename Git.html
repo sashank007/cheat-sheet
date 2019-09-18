@@ -1,9 +1,25 @@
 <h1 id="git-cheat-sheet">Git Cheat Sheet</h1>
 <h2 id="git-config">git config</h2>
-<pre><code>git config --global credential.helper cache .</code></pre><h2 id="create-and-checkout-a-new-branch">create and checkout a new branch</h2>
-<pre><code>git checkout -b &lt;new-branch-name&gt; origin/</code></pre><h2 id="switch-to-an-existing-branch">switch to an existing branch</h2>
-<pre><code>git checkout &lt;branch-name&gt;</code></pre><h2 id="set-upstream-to-be-current-branch-when-pushing">set upstream to be current branch when pushing</h2>
-<pre><code>git branch --set-upstream-to=&lt;current-branch&gt; &lt;parent-branch&gt;</code></pre><h2 id="fetch-from-all-branches">fetch from all branches</h2>
-<pre><code>git fetch --all</code></pre><h2 id="pull-from-current-branch">pull from current branch</h2>
-<pre><code>git pull</code></pre><h2 id="push-and-delete-branch-once-done">push and delete branch once done</h2>
+<pre><code>git config --global credential.helper cache .</code></pre>
+<h2 id="create-and-checkout-a-new-branch">create and checkout a new branch</h2>
+<pre><code>git checkout -b &lt;new-branch-name&gt; origin/</code></pre>
+<h2 id="switch-to-an-existing-branch">switch to an existing branch</h2>
+<pre><code>git checkout &lt;branch-name&gt;</code></pre>
+<h2 id="set-upstream-to-be-current-branch-when-pushing">set upstream to be current branch when pushing</h2>
+<pre><code>git branch --set-upstream-to=&lt;parent-branch&gt; &lt;current-branch&gt; </code></pre>
+<h2 id="fetch-from-all-branches">fetch from all branches</h2>
+<pre><code>git fetch --all</code></pre>
+<h2 id="pull-from-specific-branch">pull from specific branch</h2>
+<pre><code>git pull --&lt;verbose/quiet&gt; &lt;remote-branch&gt; &lt;branch-name&gt;</code></pre>
+<h2 id="pull-from-upstream">pull from upstream</h2>
+<pre><code>git pull upstream</code></pre>
+<h2 id="fetching-a-remote-pr-into-local-repo">fetching a remote PR into local repo</h2>
+<pre><code>git fetch origin pull/ID/head:BRANCHNAME</code></pre>
+<h2 id="pull-from-current-branch">pull from current branch</h2>
+<pre><code>git pull</code></pre>
+<h2 id="push-and-delete-branch-once-done">push and delete branch once done</h2>
 <pre><code>git push origin --delete &lt;branch-name&gt;</code></pre>
+<h2 id="git-stash-untracked-files-also">git stash untracked files also</h2>
+<pre><code>git stash -u</code></pre>
+<h2 id="pop-last-stash">pop last stash</h2>
+<pre><code>git pop</code></pre>

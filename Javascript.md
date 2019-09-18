@@ -81,7 +81,7 @@ reduce()
     //Example : Get total developers and non-dev
 ```
 
-## map Iterator
+## Map Iterator
 
 ```Javascript
 //returns array
